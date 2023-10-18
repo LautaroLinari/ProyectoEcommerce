@@ -185,6 +185,7 @@ main{
     cursor: pointer;
     border: 2px solid var(--clr-white);
     transition: background-color .2s, color .2s;
+    font-weight: 900;
 }
 
 .producto-vermas:hover{
