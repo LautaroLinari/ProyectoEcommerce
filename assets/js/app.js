@@ -1,118 +1,360 @@
-// function obtenerId(){
-//     const btn = document.querySelector(".producto-vermas");
-//     btn.onclick = function(){
-//         // console.log("Hola Nike");
-//         console.log(btn.dataset.id);
-//         const id = btn.dataset.id;
-//         getData(id);
-//     };
-// }
+const dataProductos = [
+    {
+        "name": "Nike Kobe 6 Protro",
+        "description": "El Kobe 6 Protro se basa en una combinación de colores muy popular lanzada originalmente el día de Navidad de 2010. Cuenta con una parte superior con un estampado inspirado en escamas de reptil en diferentes colores.",
+        "price": 200,
+        "talle": [
+         39,
+         40,
+         41,
+         42
+        ],
+        "categoria": "nike",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/2d07c4981-b79454149df02d672016842647038489-640-0.jpg",
+        "id": "1"
+       },
+       {
+        "name": "Nike Kyrie 8 Infinity",
+        "description": "Inspirados en el gran Kyrie Irving, point guard de los Nets de Brooklyn de la NBA las Zapatillas Nike Kyrie 8 con una construcción superior en malla te da ligereza, flexibilidad y mayor frescura incluso en los momentos más intensos del juego dándote mejor libertad de salto y movimientos en cada jugada.",
+        "price": 165,
+        "talle": [
+         42,
+         43,
+         44,
+         45
+        ],
+        "categoria": "nike",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/fcfdcce31-5c1bc185f9301519e316533297458169-640-0.jpg",
+        "id": "2"
+       },
+       {
+        "name": "Nike KD 15 Brooklyn Nets",
+        "description": "Blanco/negro, paneles de malla, detalle del logo Swoosh característico, puntera redonda, cierre con agujetas en la parte delantera, lengüeta en la parte posterior, plantilla con logo y suela de goma.",
+        "price": 175,
+        "talle": [
+         38,
+         39,
+         42,
+         43
+        ],
+        "categoria": "nike",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/fdd5cbff1-f4960508f17bfc0fa816916269226476-640-0.jpg",
+        "id": "3"
+       },
+       {
+        "name": "Lebron 13 Ambassador",
+        "description": "LeBron 13: LeBron James necesita un calzado que esté a la altura de su potente estilo de juego. Eso significa una amortiguación muy eficaz, un soporte firme y protección contra los rigores del juego.",
+        "price": 160,
+        "talle": [
+         40,
+         42,
+         44,
+         45
+        ],
+        "categoria": "nike",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/76ac41651-407962406d569001e416457555451369-640-0.jpg",
+        "id": "4"
+       },
+       {
+        "name": "Nike Hyperdunk Low",
+        "description": "Las Nike Hyperdunk Low, que ofrecen un rendimiento legendario desde 2008, no necesitan ningún complemento para destacar. Las unidades Zoom Air ofrecen la mejor amortiguación de su clase, mientras que el sistema de cordones dinámicos mantiene el pie ceñido y seguro para que puedas centrarte en el partido.",
+        "price": 95,
+        "talle": [
+         38,
+         39,
+         44,
+         45
+        ],
+        "categoria": "nike",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/6e55b2fa1-3fdd97233c64177b6616833258993569-480-0.jpg",
+        "id": "5"
+       },
+       {
+        "name": "Jordan Air 3 Retro",
+        "description": "El calzado legendario tiene un look inspirado en la herencia. El Air Jordan 3 Retro, con un giro a la combinación de colores negro cemento, se viste con uno de los colores más icónicos de la marca.",
+        "price": 105,
+        "talle": [
+         42,
+         44
+        ],
+        "categoria": "jordan",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/12111-91b9d787d8e3a60ab016801166220578-640-0.jpg",
+        "id": "6"
+       },
+       {
+        "name": "Jordan Luka 1",
+        "description": "Las Zapatillas Nike Luka 1 llegaron para traer innovación y velocidad a tu juego. Este calzado es el primero con espuma 23 en toda la suela para agregar la amortiguación y el rendimiento necesario para convertirte en un verdadero profesional del básquet.",
+        "price": 110,
+        "talle": [
+         40,
+         41,
+         42,
+         43
+        ],
+        "categoria": "jordan",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/a73e5caf1-71d37d1d3d2fe2b08316898008248109-640-0.jpg",
+        "id": "7"
+       },
+       {
+        "name": "Jordan Air 35 White Black",
+        "description": "Las Nike  Air Jordan 35 DNA  asienten  con la cabeza a uno de los arreglos originales en el Jordan 5, con su mejor impresión del colorway inaugural del modelo con placa Eclipse.",
+        "price": 100,
+        "talle": [
+         43,
+         44,
+         45,
+         46
+        ],
+        "categoria": "jordan",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/1a2a53cc1-6b015d10ce1a983e8016467903486589-640-0.jpeg",
+        "id": "8"
+       },
+       {
+        "name": "Jordan Air 12 Retro Gym Red",
+        "description": "El Air Jordan 12 Retro es el regreso del famoso diseño 1996 de Tinker Hatfield, el primero en llevar la amortiguación Zoom Air a la línea emblemática. Materiales premium en la parte superior para una actualización estacional.",
+        "price": 85,
+        "talle": [
+         38,
+         42,
+         44
+        ],
+        "categoria": "jordan",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/a62dfbae1-fab8585bc885510b2416169338262086-480-0.jpeg",
+        "id": "9"
+       },
+       {
+        "name": "Jordan Air 11 Retro Low",
+        "description": "El diseño legendario del Air Jordan 11 Retro Low redefine el estilo del básquetbol. La unidad de amortiguación de largo completo ofrece una mayor comodidad a este modelo icónico.",
+        "price": 95,
+        "talle": [
+         41,
+         43,
+         44
+        ],
+        "categoria": "jordan",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/3794e7711-a14420f01526f9254316491066491830-640-0.jpg",
+        "id": "10"
+       },
+       {
+        "name": "Puma MB.01 Rick And Morty",
+        "description": "Realiza movimientos precisos con ayuda de nuestras zapatillas de baloncesto MB.01, un calzado de alto rendimiento que llevará tu juego al siguiente nivel. Nuestras zapatillas de baloncesto MB.01 x RICK AND MORTY rinden homenaje al hito cultural que ha supuesto Rick y Morty con un llamativo cuello alzado e impresionantes combinaciones cromáticas de la serie. Estas zapatillas de perfil medio causan un impacto máximo.",
+        "price": 110,
+        "talle": [
+         40,
+         43,
+         44
+        ],
+        "categoria": "puma",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/8eb4a8cd1-0b8336d2d96841e53116823710715299-640-0.jpg",
+        "id": "11"
+       },
+       {
+        "name": "Puma MB.02 Phenom",
+        "description": "Negro/azul, paneles de malla, puntera redonda, cierre con agujetas en la parte delantera, plantilla con logo y suela de goma.",
+        "price": 100,
+        "talle": [
+         39,
+         42,
+         45
+        ],
+        "categoria": "puma",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/e7e29ac41-acbd9a11b2d3d99a2516922747226157-640-0.jpg",
+        "id": "12"
+       },
+       {
+        "name": "Puma MB.02 Supernova",
+        "description": "Naranja, paneles de malla, puntera redonda, cierre con agujetas en la parte delantera, plantilla con logo y suela de goma.",
+        "price": 100,
+        "talle": [
+         41,
+         42,
+         43
+        ],
+        "categoria": "puma",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/de1747ee1-5500e53b0c6ffc706116922748253914-480-0.jpg",
+        "id": "13"
+       },
+       {
+        "name": "Under Armour Curry 4 Flotro",
+        "description": "Hemos añadido la ligereza, el agarre y la velocidad de la amortiguación UA Flow para ofrecerte la sujeción y el control de la parte superior de perfil bajo de punto y piel de las Curry 4.",
+        "price": 95,
+        "talle": [
+         42,
+         43,
+         44
+        ],
+        "categoria": "underarmour",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/857e24c11-364d292cc0cafa769f16878138282248-640-0.jpg",
+        "id": "14"
+       },
+       {
+        "name": "Under Armour Curry 10",
+        "description": "La amortiguación UA Flow es totalmente sin caucho, lo que hace que estos zapatos sean livianos y con un agarre ridículo. La parte superior UA Warp funciona como mini cinturones de seguridad que te sujetan. Juntos, obtienes control y velocidad de frenado y avance.",
+        "price": 105,
+        "talle": [
+         42,
+         44,
+         45
+        ],
+        "categoria": "underarmour",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/999aa7c61-80d2aa86751792017216916205897279-640-0.jpg",
+        "id": "15"
+       },
+       {
+        "name": "Jordan Air 6 Retro Green",
+        "description": "Acuñado según los estándares premium de Jordan, el Air Jordan 6 Retro está a la altura. Lanzado originalmente el año en que MJ ganó su primer anillo de campeonato, este calzado recrea la magia con elegancia, utilizando materiales originales y con la suela translúcida que hizo de este diseño un ícono.",
+        "price": 85,
+        "talle": [
+         44,
+         45
+        ],
+        "categoria": "jordan",
+        "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/f17ca2ed1-1962ccfd23ef97ec0f16389364996022-640-0.jpeg",
+        "id": "16"
+       }
+  ]
+// const obtenerData = (url) => {
+//     return fetch(url)
+//       .then((res) => res.json())
+//       .then((data) => data);
+//   };
 
-const contenedor = document.getElementById("contenedor-productos");
+// const filtros = (product, array) => {
+//     return array.filter((ele) => ele.talle === product)
+// };
 
 
-function getProductos(){
-    const apiUrl = "https://65306acc6c756603295e9b53.mockapi.io/shoes";
-    return fetch(apiUrl)
-        .then(response => {
-                if(response.status === 200){
-                    return response.json()
-                } else {
-                    throw new Error(`Error al obtener los datos.`)
-                }
-            })
-        .then(response => {
-                response.forEach((product) => {
-                const content = document.createElement("div");
-                content.className = "producto";
-                content.innerHTML = `
-                <img src="${product.img}" class="producto-imagen" alt="">
-                <div class="producto-detalles">
-                    <h3 class="producto-titulo">${product.name}</h3>
-                    <p class="producto-precio">${product.price}</p>
-                    <a class="producto-vermas" type="submit" onclick="obtenerId(${product.id})">Ver mas</a>
-                </div>`;
-            
-                contenedor.append(content);
-                })
-        })
-            .catch(error =>{
-            console.error(error)
-    
-        });
-    
-}
-getProductos();
+// const contenedor = document.getElementById("contenedor-productos");
 
+// obtenerData("https://65306acc6c756603295e9b53.mockapi.io/shoes")
+//     .then((productoApi) => {
+//         cargarProductos(productoApi, contenedor);
+//         // console.log(filtros("nike", productoApi ))
 
-function obtenerId(product) {
-    const apiUrl = `https://65306acc6c756603295e9b53.mockapi.io/shoes/${product}`;
-    return fetch(apiUrl)
-        .then(response => {
-                if(response.status === 200){
-                    return response.json()
-                } else {
-                    throw new Error(`Error al obtener los datos.`)
-                }
-            })
-        .then(product => {
-            console.log(product.id);
-            location.href ='./detalles.html';
-            console.log(product.id);
-            // const contenedor2 = document.getElementById("contenedor-detalles")
-
-            // product.forEach((product) => {
-            // const content2 = document.createElement("div");
-            // content2.className = "producto";
-            // content2.innerHTML = `
-            // <img src="${product.img}" class="producto-imagen" alt="">
-            // <div class="producto-detalles">
-            //     <h3 class="producto-titulo">${product.name}</h3>
-            //     <p class="producto-precio">${product.price}</p>
-            //     <p class="producto-precio">${product.talle}</p>
-            //     <p class="producto-precio">${product.categoria}</p>
-            // </div>`;
-        
-            // contenedor2.append(content2);
-            // })
-        })
-
-        .catch(error =>{
-
-            alert.error(error)
-
-        });
-        
-}
-
-
-
-
-let carrito = [];  
-
-
-// function getData(id){
-//     const apiUrl = `https://65306acc6c756603295e9b53.mockapi.io/shoes/${id}`;
-//     return fetch(apiUrl)
-//         .then(response => {
-//                 if(response.status === 200){
-//                     return response.json()
-//                 } else {
-//                     throw new Error(`Error al obtener los datos.`)
-//                 }
-//             })
-//         .then(product => {
-//             console.log(data)
-//             const name = product.name;
-//             const id = product.id;
-//             const description = product.description;
-//             const price = product.price;
-//             const talle = product.talle;
-//             console.log(`La zapatilla ${name} es ${description} y tiene un precio de ${price} USD. Sus tallas disponibles son ${talle}, ${id}`)
 //         })
-//         .catch(error =>{
-//             console.error(error)
+//     .catch((error) => {
+//         console.error("Error al obtener los datos:", error);
+//     });
 
-//         });
-// }
-// getData();
+// const cargarProductos = (data, container) => {
+//   data.forEach((product) => {
+//     const div = document.createElement("div");
+//     div.className = "producto";
+
+//     div.innerHTML = `
+//     <img src=${product.img} class="producto-imagen" alt="">
+//     <div class="producto-detalles">
+//         <h2 class="producto-titulo">${product.name}</h2>
+//         <p class="producto-price">$ ${product.price} USD</p>
+//         <button class="producto-vermas" id=${product.id}>Ver mas</button>
+//         <button class="producto-vermas">Carrito</button>
+//     </div>
+    
+//     `;
+//     container.appendChild(div);
+
+//     document.getElementById(`${product.id}`).addEventListener("click", () => {
+//       console.log(`el id es = ${product.id}`);
+//     });
+//   });
+// };
+
+const contenedorProductos = document.querySelector("#contenedor-productos");
+const btnsCategoria = document.querySelectorAll(".boton-categoria");
+const titulo = document.querySelector("#titulo-principal");
+let btnAgregar = document.querySelectorAll(".producto-agregar");
+const numerito = document.querySelector("#numerito");
+
+
+function cargarProductos(productosElegidos) {
+
+    contenedorProductos.innerHTML = "";
+
+    productosElegidos.forEach(product => {
+        const div = document.createElement("div");
+        div.className = "producto";
+    
+        div.innerHTML = `
+        <img src=${product.img} class="producto-imagen" alt="">
+        <div class="producto-detalles">
+            <h2 class="producto-titulo">${product.name}</h2>
+            <p class="producto-price">$ ${product.price} USD</p>
+            <button class="producto-vermas" id=${product.id}>Ver mas</button>
+            <button class="producto-agregar" id=${product.id}>Agregar al carrito</button>
+        </div>
+        
+        `;
+        contenedorProductos.append(div);
+    })
+    actualizarAgregar();
+    // console.log(btnAgregar);
+}
+
+
+cargarProductos(dataProductos);
+
+btnsCategoria.forEach(boton => {
+    boton.addEventListener("click", (e) =>{
+
+        btnsCategoria.forEach(boton => boton.classList.remove("active"));
+        e.currentTarget.classList.add("active");
+
+        if (e.currentTarget.id != "todos") {
+
+            const productCategoria = dataProductos.find(dataProducto => dataProducto.categoria === e.currentTarget.id);
+            titulo.innerText = productCategoria.categoria;
+
+            const productSeleccionado = dataProductos.filter(dataProducto => dataProducto.categoria === e.currentTarget.id);
+            cargarProductos(productSeleccionado);
+
+        } else {
+            titulo.innerText = "Todos los Productos";
+            cargarProductos(dataProductos);
+
+        }
+    })
+})
+
+function actualizarAgregar() {
+    btnAgregar = document.querySelectorAll(".producto-agregar");
+
+    btnAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarCarrito)
+    });
+}
+
+let productosCarrito;
+
+let productosEnCarrito = localStorage.getItem("productos-en-carrito");
+// const productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
+
+if(productosEnCarrito){
+    productosCarrito = JSON.parse(productosEnCarrito); 
+    actualizarNumeroCarrito();
+}else{
+    productosCarrito = [];
+}
+// const productosCarrito = [];
+
+
+function agregarCarrito(e) {
+    const idBoton = e.currentTarget.id
+    const productoAgregado = dataProductos.find(dataProducto => dataProducto.id === idBoton);
+    // console.log(productoAgregado); 
+
+    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton)) {
+        const index = productosCarrito.findIndex(dataProducto => dataProducto.id === idBoton);
+        productosCarrito[index].cantidad++;
+    } else {
+        productoAgregado.cantidad = 1;
+        productosCarrito.push(productoAgregado);
+    }
+    actualizarNumeroCarrito();
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosCarrito));
+}
+
+function actualizarNumeroCarrito(){
+    let nuevoNumero = productosCarrito.reduce((acumulador, dataProducto) => acumulador + dataProducto.cantidad, 0)
+    numerito.innerText = nuevoNumero;
+}

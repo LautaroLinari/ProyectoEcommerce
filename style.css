@@ -3,6 +3,7 @@
 :root {
     --clr-main: #167296;
     --clr-main-light: #39b0df;
+    --clr-main-buy: #319e16;
     --clr-white: #ececec;
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
@@ -66,12 +67,12 @@ aside{
     gap: 1rem;
     font-weight: 900;
     padding: 1rem;
+    width: 100%;
 
 }
 .boton-menu.active{
     background-color: var(--clr-white);
     color: var(--clr-main);
-    width: 100%;
     border-radius: 1rem 0 0 1rem;
     position: relative;
 }
@@ -192,6 +193,24 @@ main{
     color: var(--clr-white);
 }
 
+.producto-agregar{
+    border: 0;
+    background-color: var(--clr-white);
+    color: var(--clr-main-buy);
+    padding: 0.4rem;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 2px solid var(--clr-white);
+    transition: background-color .2s, color .2s;
+    font-weight: 900;
+}
+
+.producto-agregar:hover{
+    background-color: var(--clr-main-buy);
+    color: var(--clr-white);
+}
+
 /* CARRITO */
 .contenedor-carrito{
     display: flex;
@@ -201,6 +220,8 @@ main{
 
 .carrito-vacio, .carrito-comprado{
     color: var(--clr-main);
+    font-size: 28px;
+    text-align: center;
 }
 
 .carrito-productos{
@@ -237,6 +258,7 @@ main{
     background-color: transparent;
     color: var(--clr-red);
     cursor: pointer;
+    font-size: 20px;
 }
 
 .carrito-acciones{

@@ -17,22 +17,22 @@
             <nav>
                 <ul class="menu">
                     <li>
-                        <button class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill"></i> Todos los productos </button>
+                        <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill"></i> Todos los productos </button>
                     </li>
                     <li>
-                        <button class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Nike </button>
+                        <button id="nike" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Nike </button>
                     </li>
                     <li>
-                        <button class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Jordan </button>
+                        <button id="jordan" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Jordan </button>
                     </li>
                     <li>
-                        <button class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Puma </button>
+                        <button id="puma" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Puma </button>
                     </li>
                     <li>
-                        <button class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Under Armour </button>
+                        <button id="underarmour" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Under Armour </button>
                     </li>
                     <li>
-                        <a class="boton-menu boton-carrito " href="./carrito.html"><i class="bi bi-cart4"></i> Carrito <span class="numerito">0</span></a>
+                        <a class="boton-menu boton-carrito " href="./carrito.html"><i class="bi bi-cart4"></i> Carrito <span id="numerito" class="numerito">0</span></a>
                     </li>
                 </ul>
             </nav>
@@ -42,9 +42,9 @@
         </aside>
 
         <main>
-            <h2 class="titulo-principal">Todos los Productos</h2>
+            <h2 id="titulo-principal" class="titulo-principal">Todos los Productos</h2>
             <div id="contenedor-productos" class="contenedor-productos">
-
+                <!-- Esto se rellena con JavaScript -->
             </div>
 
         </main>
@@ -52,6 +52,6 @@
 
 
 
-    <script defer src="./assets/js/app.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>

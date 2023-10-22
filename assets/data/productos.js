@@ -1,10 +1,10 @@
-[
+export const dataProductos = [
     {
       "name": "Nike Kobe 6 Proto",
       "description": "El Kobe 6 Protro se basa en una combinación de colores muy popular lanzada originalmente el día de Navidad de 2010. Cuenta con una parte superior con un estampado inspirado en escamas de reptil en diferentes colores.",
       "price": 200,
       "talle": [39,40,41,42],
-      "categoria": "Nike",
+      "categoria": "nike",
       "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/2d07c4981-b79454149df02d672016842647038489-640-0.jpg",
       "id": "1"
     },
@@ -13,7 +13,7 @@
       "description": "Inspirados en el gran Kyrie Irving, point guard de los Nets de Brooklyn de la NBA las Zapatillas Nike Kyrie 8 con una construcción superior en malla te da ligereza, flexibilidad y mayor frescura incluso en los momentos más intensos del juego dándote mejor libertad de salto y movimientos en cada jugada.",
       "price": 165,
       "talle": [42,43,44,45],
-      "categoria": "Nike",
+      "categoria": "nike",
       "img": "./assets/img/nike2.jpg",
       "id": "2"
     },
@@ -22,7 +22,7 @@
       "description": "Blanco/negro, paneles de malla, detalle del logo Swoosh característico, puntera redonda, cierre con agujetas en la parte delantera, lengüeta en la parte posterior, plantilla con logo y suela de goma.",
       "price": 175,
       "talle": [38,39,42,43],
-      "categoria": "Nike",
+      "categoria": "nike",
       "img": "./assets/img/nike3.jpg",
       "id": "3"
     },
@@ -31,7 +31,7 @@
       "description": "LeBron 13: LeBron James necesita un calzado que esté a la altura de su potente estilo de juego. Eso significa una amortiguación muy eficaz, un soporte firme y protección contra los rigores del juego.",
       "price": 160,
       "talle": [40,42,44,45],
-      "categoria": "Nike",
+      "categoria": "nike",
       "img": "./assets/img/nike4.jpg",
       "id": "4"
     },
@@ -40,7 +40,7 @@
       "description": "Las Nike Hyperdunk Low, que ofrecen un rendimiento legendario desde 2008, no necesitan ningún complemento para destacar. Las unidades Zoom Air ofrecen la mejor amortiguación de su clase, mientras que el sistema de cordones dinámicos mantiene el pie ceñido y seguro para que puedas centrarte en el partido.",
       "price": 95,
       "talle": [38,39,44,45],
-      "categoria": "Nike",
+      "categoria": "nike",
       "img": "./assets/img/nike5.jpg",
       "id": "5"
     },
@@ -49,7 +49,7 @@
       "description": "El calzado legendario tiene un look inspirado en la herencia. El Air Jordan 3 Retro, con un giro a la combinación de colores negro cemento, se viste con uno de los colores más icónicos de la marca.",
       "price": 105,
       "talle": [42,44],
-      "categoria": "Jordan",
+      "categoria": "jordan",
       "img": "./assets/img/jordan6.jpg",
       "id": "6"
     },
@@ -58,7 +58,7 @@
       "description": "Las Zapatillas Nike Luka 1 llegaron para traer innovación y velocidad a tu juego. Este calzado es el primero con espuma 23 en toda la suela para agregar la amortiguación y el rendimiento necesario para convertirte en un verdadero profesional del básquet.",
       "price": 110,
       "talle": [40,41,42,43],
-      "categoria": "Jordan",
+      "categoria": "jordan",
       "img": "./assets/img/jordan1.jpg",
       "id": "7"
     },
@@ -67,7 +67,7 @@
       "description": "Las Nike  Air Jordan 35 DNA  asienten  con la cabeza a uno de los arreglos originales en el Jordan 5, con su mejor impresión del colorway inaugural del modelo con placa Eclipse.",
       "price": 100,
       "talle": [43,44,45,46],
-      "categoria": "Jordan",
+      "categoria": "jordan",
       "img": "./assets/img/jordan2.jpg",
       "id": "8"
     },
@@ -76,7 +76,7 @@
       "description": "El Air Jordan 12 Retro es el regreso del famoso diseño 1996 de Tinker Hatfield, el primero en llevar la amortiguación Zoom Air a la línea emblemática. Materiales premium en la parte superior para una actualización estacional.",
       "price": 85,
       "talle": [38,42,44],
-      "categoria": "Jordan",
+      "categoria": "jordan",
       "img": "./assets/img/jordan3.jpg",
       "id": "9"
     },
@@ -85,7 +85,7 @@
       "description": "El diseño legendario del Air Jordan 11 Retro Low redefine el estilo del básquetbol. La unidad de amortiguación de largo completo ofrece una mayor comodidad a este modelo icónico.",
       "price": 95,
       "talle": [41,43,44],
-      "categoria": "Jordan",
+      "categoria": "jordan",
       "img": "./assets/img/jordan4.jpg",
       "id": "10"
     },
@@ -94,7 +94,7 @@
       "description": "Realiza movimientos precisos con ayuda de nuestras zapatillas de baloncesto MB.01, un calzado de alto rendimiento que llevará tu juego al siguiente nivel. Nuestras zapatillas de baloncesto MB.01 x RICK AND MORTY rinden homenaje al hito cultural que ha supuesto Rick y Morty con un llamativo cuello alzado e impresionantes combinaciones cromáticas de la serie. Estas zapatillas de perfil medio causan un impacto máximo.",
       "price": 110,
       "talle": [40,43,44],
-      "categoria": "Puma",
+      "categoria": "puma",
       "img": "./assets/img/puma1.jpg",
       "id": "11"
     },
@@ -103,7 +103,7 @@
       "description": "Negro/azul, paneles de malla, puntera redonda, cierre con agujetas en la parte delantera, plantilla con logo y suela de goma.",
       "price": 100,
       "talle": [39,42,45],
-      "categoria": "Puma",
+      "categoria": "puma",
       "img": "./assets/img/puma2.jpg",
       "id": "12"
     },
@@ -112,7 +112,7 @@
       "description": "Naranja, paneles de malla, puntera redonda, cierre con agujetas en la parte delantera, plantilla con logo y suela de goma.",
       "price": 100,
       "talle": [41,42,43],
-      "categoria": "Puma",
+      "categoria": "puma",
       "img": "./assets/img/puma3.jpg",
       "id": "13"
     },
@@ -121,7 +121,7 @@
       "description": "Hemos añadido la ligereza, el agarre y la velocidad de la amortiguación UA Flow para ofrecerte la sujeción y el control de la parte superior de perfil bajo de punto y piel de las Curry 4.",
       "price": 95,
       "talle": [42,43,44],
-      "categoria": "Under Armour",
+      "categoria": "underarmour",
       "img": "./assets/img/under1.jpg",
       "id": "14"
     },
@@ -130,7 +130,7 @@
       "description": "La amortiguación UA Flow es totalmente sin caucho, lo que hace que estos zapatos sean livianos y con un agarre ridículo. La parte superior UA Warp funciona como mini cinturones de seguridad que te sujetan. Juntos, obtienes control y velocidad de frenado y avance.",
       "price": 105,
       "talle": [42,44,45],
-      "categoria": "Under Armour",
+      "categoria": "underarmour",
       "img": "./assets/img/under2.jpg",
       "id": "15"
     },
@@ -139,7 +139,7 @@
       "description": "Acuñado según los estándares premium de Jordan, el Air Jordan 6 Retro está a la altura. Lanzado originalmente el año en que MJ ganó su primer anillo de campeonato, este calzado recrea la magia con elegancia, utilizando materiales originales y con la suela translúcida que hizo de este diseño un ícono.",
       "price": 85,
       "talle": [44,45],
-      "categoria": "Jordan",
+      "categoria": "jordan",
       "img": "./assets/img/jordan5.jpg",
       "id": "16"
     }
