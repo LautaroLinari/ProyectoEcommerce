@@ -77,8 +77,27 @@ function actualizarEliminar() {
 }
 
 function eliminarDelCarrito(e){
-    let idBoton = e.currentTarget.id;
+    Toastify({
+        text: "Eliminado ",
+        duration: 2000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "#39b0df",
+          borderRadius: "2rem",
+          textTransform: "uppercase",
+          fontSize: ".85rem"
+        }, 
+        offset: {
+            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+        onClick: function(){} // Callback after click
+      }).showToast();
 
+    let idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
 
 
@@ -92,9 +111,27 @@ function eliminarDelCarrito(e){
 
 btnVaciar.addEventListener("click", vaciarCarrito);
 function vaciarCarrito(){
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    cargarProductosCarrito();
+
+    Swal.fire({
+        title: 'Estas seguro?',
+        text: `Eliminaras ${productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0)}  productos del carrito.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Eliminar',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+
+            productosEnCarrito.length = 0;
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+            cargarProductosCarrito();
+
+        }
+      })
+    
 }
 
 function actualizarTotal(){

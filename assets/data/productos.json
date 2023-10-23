@@ -5,7 +5,7 @@
       "price": 200,
       "talle": [39,40,41,42],
       "categoria": "nike",
-      "img": "https://acdn.mitiendanube.com/stores/001/160/313/products/2d07c4981-b79454149df02d672016842647038489-640-0.jpg",
+      "img": "./assets/img/nike1.jpg",
       "id": "1"
     },
     {
