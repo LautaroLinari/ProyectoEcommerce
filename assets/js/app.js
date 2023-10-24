@@ -71,6 +71,7 @@ const btnsCategoria = document.querySelectorAll(".boton-categoria");
 const titulo = document.querySelector("#titulo-principal");
 let btnAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
+let btnVerMas = document.querySelectorAll(".producto-vermas");
 
 
 function cargarProductos(productosElegidos) {
@@ -86,7 +87,7 @@ function cargarProductos(productosElegidos) {
         <div class="producto-detalles">
             <h2 class="producto-titulo">${product.name}</h2>
             <p class="producto-price">$ ${product.price} USD</p>
-            <button class="producto-vermas" id=${product.id}>Ver mas</button>
+            <button class="producto-vermas"  id="${product.id}">Ver mas</button>
             <button class="producto-agregar" id=${product.id}>Agregar</button>
         </div>
         
@@ -94,7 +95,7 @@ function cargarProductos(productosElegidos) {
         contenedorProductos.append(div);
     })
     actualizarAgregar();
-    // console.log(btnAgregar);
+    verMas();
 }
 
 
@@ -181,6 +182,27 @@ function agregarCarrito(e) {
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosCarrito));
 }
+
+function verMas(){
+        btnVerMas = document.querySelectorAll(".producto-vermas");
+        btnVerMas.forEach(boton => {
+            boton.addEventListener("click", verDetalles)
+    })
+}
+
+function verDetalles(e){
+    const idBoton = e.currentTarget.id
+    const productoDetalles = dataProductos.find(dataProducto => dataProducto.id === idBoton);
+    // console.log(productoDetalles);
+    // productoDetalles.push(productoDetalles);
+
+    localStorage.setItem("productos-detalles", JSON.stringify(productoDetalles));
+    
+    location.href='./detalles.html';
+
+}
+
+
 
 function actualizarNumeroCarrito(){
     let nuevoNumero = productosCarrito.reduce((acumulador, dataProducto) => acumulador + dataProducto.cantidad, 0)
