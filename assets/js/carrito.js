@@ -1,7 +1,7 @@
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
-
+ 
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorProductos = document.querySelector("#carrito-productos");
 const contenedorAcciones = document.querySelector("#carrito-acciones");
@@ -126,6 +126,7 @@ function vaciarCarrito(){
         if (result.isConfirmed) {
 
             productosEnCarrito.length = 0;
+            //Convierto el localstorage en objeto
             localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
             cargarProductosCarrito();
 
@@ -134,6 +135,8 @@ function vaciarCarrito(){
     
 }
 
+
+//Uso mediante objeto la funcion reduce para obtener el precio total
 function actualizarTotal(){
 
     const totalCalculado = productosEnCarrito.reduce((acumulador, producto) => acumulador + (producto.price * producto.cantidad), 0);
@@ -142,13 +145,145 @@ function actualizarTotal(){
 
 btnComprar.addEventListener("click", comprarCarrito);
 
-function comprarCarrito(){
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    
-    contenedorCarritoVacio.classList.add("disabled");
-    contenedorProductos.classList.add("disabled");
-    contenedorAcciones.classList.add("disabled");
-    contenedorComprado.classList.remove("disabled");
 
+// COMPRA SIMULADA
+function comprarCarrito(){
+
+    Swal.fire({
+        title: 'Forma de Pago',
+        allowOutsideClick: false,
+            html: `
+            <style>
+                form {
+                    display: flex;
+                    flex-direction:column;
+                    align-items:center;
+                    justify-content:center;
+                    flex-wrap: wrap;
+                }
+                section {
+                    padding:10px;
+                }
+                form input{
+                    width:100px;
+                }
+            </style>
+            <form>
+                <section>
+                    <h3>Informacion de Contacto</h3>
+                    <div>
+                        <label for="name">
+                            <span>Nombre Completo: </span>
+                        </label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="mail">
+                            <span>Correo Electronico: </span>
+                        </label>
+                        <input type="email" id="mail" name="email" required>
+                    </div>
+                    <div>
+                        <label for="pwd">
+                            <span>Fecha Nacimiento: </span>
+                        </label>
+                        <input type="date" id="nacimiento" max="2007-01-01" name="fechaNacimiento" required>
+                    </div>
+                    <div>
+                        <label for="pwd">
+                            <span>Numero de telefono: </span>
+                        </label>
+                        <input type="number" id="telefono" name="telefono" pattern="[0-9]{11}" required>
+                    </div>
+                </section>
+                <section>
+                    <h3>Informacion de Pago</h3>
+                    <div>
+                        <label for="card">
+                            <span>Tipo de Tarjeta:</span>
+                        </label>
+                        <select id="typeCard" name="usercard" required>
+                            <option value="visa">Visa</option>
+                            <option value="mc">Mastercard</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="number">
+                            <span>Numero de Tarjeta:</span>
+                        </label>
+                        <input type="tel" id="cardNumber" name="cardNumber" required>
+                    </div>
+                    </div>
+                        <label for="date">
+                            <span>Fecha de Expiracion:</span>
+                        </label>
+                        <input type="date" id="dateExp" min="2023-10-27" max="2050-01-01" name="expiration" required>
+                    </div>
+                    </div>
+                        <br>
+                        <label for="number">
+                            <span>Codigo de Seguridad:</span>
+                        </label>
+                        <input type="number" min="100" max="9999" id="codigo" name="cardcode" required>
+                    </div>
+                </section>
+        </form>`,
+        confirmButtonText: 'Pagar',
+        cancelButtonText: 'Cancelar',
+        showCancelButton: 'true',
+        focusConfirm: false,
+        preConfirm: () => {
+          const nombre = Swal.getPopup().querySelector('#name').value
+          const email = Swal.getPopup().querySelector('#mail').value
+          const nacimiento = Swal.getPopup().querySelector('#nacimiento').value
+          const telefono = Swal.getPopup().querySelector('#telefono').value
+          const typeCard = Swal.getPopup().querySelector('#typeCard').value
+          const cardNumber = Swal.getPopup().querySelector('#cardNumber').value
+          const dateExp = Swal.getPopup().querySelector('#dateExp').value
+          const codigo = Swal.getPopup().querySelector('#codigo').value
+          if (!nombre || !email || !nacimiento || !telefono || !typeCard || !cardNumber || !dateExp || !codigo ) {
+            Swal.showValidationMessage(`Error: Algun campo se encuentra vacio!`)
+          }
+          return { nombre: nombre, email: email, nacimiento:nacimiento, telefono:telefono, typeCard:typeCard, cardNumber:cardNumber, dateExp:dateExp, codigo:codigo }
+        }
+    }).then((Pagar) => {
+        if (Pagar.isConfirmed) {
+            let timerInterval
+            Swal.fire({
+              title: 'Realizando Pago',
+              html: 'Espere un momento...',
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                  b.textContent = Swal.getTimerLeft()
+                }, 100)
+              },
+              willClose: () => {
+                clearInterval(timerInterval)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Pago Exitoso',
+                    showConfirmButton: false,
+                    timer: 1200
+                  })
+              }
+            })
+    
+            productosEnCarrito.length = 0;
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    
+            setTimeout(cssGracias, 2000)
+            function cssGracias(){
+                contenedorCarritoVacio.classList.add("disabled");
+                contenedorProductos.classList.add("disabled");
+                contenedorAcciones.classList.add("disabled");
+                contenedorComprado.classList.remove("disabled");
+            }
+        } 
+    })
 }
+

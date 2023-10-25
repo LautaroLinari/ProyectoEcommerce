@@ -6,6 +6,8 @@
       "talle": [39,40,41,42],
       "categoria": "nike",
       "img": "./assets/img/nike1.jpg",
+      "img1": "./assets/img/detalles/nike1detalles.jpg",
+      "img2": "./assets/img/detalles/nike1detalles1.jpg",
       "id": "1"
     },
     {
@@ -15,6 +17,8 @@
       "talle": [42,43,44,45],
       "categoria": "nike",
       "img": "./assets/img/nike2.jpg",
+      "img1": "./assets/img/detalles/nike2detalles.jpg",
+      "img2": "./assets/img/detalles/nike2detalles1.jpg",
       "id": "2"
     },
     {
@@ -24,6 +28,8 @@
       "talle": [38,39,42,43],
       "categoria": "nike",
       "img": "./assets/img/nike3.jpg",
+      "img1": "./assets/img/detalles/nike3detalles.jpg",
+      "img2": "./assets/img/detalles/nike3detalles1.jpg",
       "id": "3"
     },
     {
@@ -33,6 +39,8 @@
       "talle": [40,42,44,45],
       "categoria": "nike",
       "img": "./assets/img/nike4.jpg",
+      "img1": "./assets/img/detalles/nike4detalles.jpg",
+      "img2": "./assets/img/detalles/nike4detalles1.jpg",
       "id": "4"
     },
     {
@@ -42,6 +50,8 @@
       "talle": [38,39,44,45],
       "categoria": "nike",
       "img": "./assets/img/nike5.jpg",
+      "img1": "./assets/img/detalles/nike5detalles.jpg",
+      "img2": "./assets/img/detalles/nike5detalles1.jpg",
       "id": "5"
     },
     {
@@ -51,6 +61,8 @@
       "talle": [42,44],
       "categoria": "jordan",
       "img": "./assets/img/jordan6.jpg",
+      "img1": "./assets/img/detalles/jordan6detalles.jpg",
+      "img2": "./assets/img/detalles/jordan6detalles1.jpg",
       "id": "6"
     },
     {
@@ -60,6 +72,8 @@
       "talle": [40,41,42,43],
       "categoria": "jordan",
       "img": "./assets/img/jordan1.jpg",
+      "img1": "./assets/img/detalles/jordan1detalles.jpg",
+      "img2": "./assets/img/detalles/jordan1detalles1.jpg",
       "id": "7"
     },
     {
@@ -69,6 +83,8 @@
       "talle": [43,44,45,46],
       "categoria": "jordan",
       "img": "./assets/img/jordan2.jpg",
+      "img1": "./assets/img/detalles/jordan2detalles.jpg",
+      "img2": "./assets/img/detalles/jordan2detalles1.jpg",
       "id": "8"
     },
     {
@@ -78,6 +94,8 @@
       "talle": [38,42,44],
       "categoria": "jordan",
       "img": "./assets/img/jordan3.jpg",
+      "img1": "./assets/img/detalles/jordan3detalles.jpg",
+      "img2": "./assets/img/detalles/jordan3detalles1.jpg",
       "id": "9"
     },
     {
@@ -87,6 +105,8 @@
       "talle": [41,43,44],
       "categoria": "jordan",
       "img": "./assets/img/jordan4.jpg",
+      "img1": "./assets/img/detalles/jordan4detalles.jpg",
+      "img2": "./assets/img/detalles/jordan4detalles1.jpg",
       "id": "10"
     },
     {
@@ -96,6 +116,8 @@
       "talle": [40,43,44],
       "categoria": "puma",
       "img": "./assets/img/puma1.jpg",
+      "img1": "./assets/img/detalles/puma1detalles.jpg",
+      "img2": "./assets/img/detalles/puma1detalles1.jpg",
       "id": "11"
     },
     {
@@ -105,6 +127,8 @@
       "talle": [39,42,45],
       "categoria": "puma",
       "img": "./assets/img/puma2.jpg",
+      "img1": "./assets/img/detalles/puma2detalles.jpg",
+      "img2": "./assets/img/detalles/puma2detalles1.jpg",
       "id": "12"
     },
     {
@@ -114,6 +138,8 @@
       "talle": [41,42,43],
       "categoria": "puma",
       "img": "./assets/img/puma3.jpg",
+      "img1": "./assets/img/detalles/puma3detalles.jpg",
+      "img2": "./assets/img/detalles/puma3detalles1.jpg",
       "id": "13"
     },
     {
@@ -123,6 +149,8 @@
       "talle": [42,43,44],
       "categoria": "underarmour",
       "img": "./assets/img/under1.jpg",
+      "img1": "./assets/img/detalles/under1detalles.jpg",
+      "img2": "./assets/img/detalles/under1detalles1.jpg",
       "id": "14"
     },
     {
@@ -132,6 +160,8 @@
       "talle": [42,44,45],
       "categoria": "underarmour",
       "img": "./assets/img/under2.jpg",
+      "img1": "./assets/img/detalles/under2detalles.jpg",
+      "img2": "./assets/img/detalles/under2detalles1.jpg",
       "id": "15"
     },
     {
@@ -141,6 +171,8 @@
       "talle": [44,45],
       "categoria": "jordan",
       "img": "./assets/img/jordan5.jpg",
+      "img1": "./assets/img/detalles/jordan5detalles.jpg",
+      "img2": "./assets/img/detalles/jordan5detalles1.jpg",
       "id": "16"
     }
   ]

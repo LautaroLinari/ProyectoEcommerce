@@ -247,7 +247,22 @@ main{
 }
 
 .detalles{
+    display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+}
+.detalles-img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.detalles-img img{
+    max-width: 100%;
+    max-height: 320px;
 }
 
 .contenedor-detalle{
@@ -267,6 +282,8 @@ main{
     color: var(--clr-white);
     border-radius: .5rem;
     cursor: pointer;
+    font-size: larger;
+    font-weight: 900;
 }
 
 .contenedor-detalle button:hover{
