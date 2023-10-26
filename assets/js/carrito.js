@@ -1,6 +1,5 @@
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
-
  
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorProductos = document.querySelector("#carrito-productos");
@@ -12,6 +11,8 @@ let btnElminar = document.querySelectorAll(".carrito-producto-eliminar");
 const btnVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contTotal = document.querySelector("#total");
 const btnComprar = document.querySelector("#carrito-acciones-comprar");
+let btnActualizarMinus = document.querySelectorAll(".actualizar-cantidad-minus");
+let btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
 
 
 function cargarProductosCarrito() {
@@ -38,7 +39,13 @@ function cargarProductosCarrito() {
                 <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
                     <p>${producto.cantidad}</p>
+                    <button class="actualizar-cantidad-minus" id="${producto.cantidad}"><i class="bi bi-dash"></i></button>
+                    <button class="actualizar-cantidad-plus" id="${producto.cantidad}"><i class="bi bi-plus"></i></button>
                 </div>
+                    <div class="carrito-producto-cantidad">
+                    <small>Talle</small>
+                    <p>${producto.talle}</p>
+                 </div>
                 <div class="carrito-producto-precio">
                     <small>Precio</small>
                     <p>$ ${producto.price} USD</p>
@@ -62,10 +69,41 @@ function cargarProductosCarrito() {
 
     actualizarEliminar();
     actualizarTotal();
+    // actualizarCantidad();
 }
 
-
+/*
+    Para eso deberías bajarle la cantidad, deberíamos hacer dos botoncitos en el carrito mismo y que se pueda aumentar y disminuir la cantidad, 
+    con una función muy parecida a la de eliminar, pero que simplemente haga cantidad++ o cantidad— y actualizarCarrito para que vuelva a mostrarlo bien digamos 
+*/
 cargarProductosCarrito();
+
+// function actualizarCantidad(){
+//     btnActualizarMinus = document.querySelectorAll(".actualizar-cantidad-minus");
+//     btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
+
+
+//     btnActualizarMinus.forEach(boton => {
+//         boton.addEventListener("click", restarCantidad);
+//     })
+
+//     btnActualizarPlus.forEach(boton => {
+//         boton.addEventListener("click", sumarCantidad);
+//     })
+
+// }
+// function restarCantidad(e){
+//     let idBoton = e.currentTarget.id;
+//     console.log(idBoton);
+//     const actualizarCantidad = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+//     console.log(actualizarCantidad);
+// }
+
+// function sumarCantidad(){
+//     console.log("sumando");
+// }
+
+
 
 
 function actualizarEliminar() {
@@ -85,7 +123,7 @@ function eliminarDelCarrito(e){
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: "#39b0df",
+          background: "#c53838",
           borderRadius: "2rem",
           textTransform: "uppercase",
           fontSize: ".85rem"
@@ -143,10 +181,10 @@ function actualizarTotal(){
     total.innerText = `$ ${totalCalculado} USD`;
 }
 
-btnComprar.addEventListener("click", comprarCarrito);
 
 
 // COMPRA SIMULADA
+btnComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito(){
 
     Swal.fire({
@@ -165,7 +203,12 @@ function comprarCarrito(){
                     padding:10px;
                 }
                 form input{
-                    width:100px;
+                    width:150px;
+                    padding: 3px 0 3px 0;
+                    margin: .7rem;
+                }
+                h3{
+                    padding:1rem;
                 }
             </style>
             <form>

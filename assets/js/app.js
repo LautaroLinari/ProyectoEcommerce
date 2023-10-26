@@ -61,16 +61,16 @@ btnsCategoria.forEach(boton => {
         btnsCategoria.forEach(boton => boton.classList.remove("active"));
         e.currentTarget.classList.add("active");
 
-        if (e.currentTarget.id != "todos") {
+        const categoriaSeleccionada = e.currentTarget.id;
 
-            const productCategoria = dataProductos.find(dataProducto => dataProducto.categoria === e.currentTarget.id);
-            titulo.innerText = productCategoria.categoria;
+        if (categoriaSeleccionada != "todos") {
+            titulo.innerText = categoriaSeleccionada.toUpperCase();
 
-            const productSeleccionado = dataProductos.filter(dataProducto => dataProducto.categoria === e.currentTarget.id);
+            const productSeleccionado = dataProductos.filter(dataProducto => dataProducto.categoria === categoriaSeleccionada);
             cargarProductos(productSeleccionado);
 
         } else {
-            titulo.innerText = "Todos los Productos";
+            titulo.innerText = "TODOS LOS PRODUCTOS";
             cargarProductos(dataProductos);
 
         }
@@ -88,7 +88,6 @@ function actualizarAgregar() {
 let productosCarrito;
 
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
-// const productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
 
 if(productosEnCarrito){
     productosCarrito = JSON.parse(productosEnCarrito); 
@@ -96,48 +95,76 @@ if(productosEnCarrito){
 }else{
     productosCarrito = [];
 }
-// const productosCarrito = [];
 
 
 function agregarCarrito(e) {
 
-    Toastify({
-        text: "Agregado al carrito ",
-        duration: 2000,
-        destination: "./carrito.html",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "#39b0df",
-          borderRadius: "2rem",
-          textTransform: "uppercase",
-          fontSize: ".85rem"
-        }, 
-        offset: {
-            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
-          },
-        onClick: function(){} // Callback after click
-      }).showToast();
-
     const idBoton = e.currentTarget.id
     const productoAgregado = dataProductos.find(dataProducto => dataProducto.id === idBoton);
-    // console.log(productoAgregado); 
+    const talleBuscado = productoAgregado.talle;
 
-    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton)) {
-        const index = productosCarrito.findIndex(dataProducto => dataProducto.id === idBoton);
-        productosCarrito[index].cantidad++;
-    } else {
-        productoAgregado.cantidad = 1;
-        productosCarrito.push(productoAgregado);
-    }
-    actualizarNumeroCarrito();
 
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosCarrito));
+     Swal.fire({
+        title: 'Selecciona un talle',
+        input: 'number',
+        allowOutsideClick: false,
+        inputPlaceholder: talleBuscado,
+        showCancelButton: true,
+        cancelButtonText:'Cancelar',
+        confirmButtonText:'Agregar',
+        inputValidator: (value) => {
+            for (let i = 0; i < talleBuscado.length; i++) {
+                const element = talleBuscado[i];
+
+                if(value === `${element}`){
+                        Toastify({
+                            text: "Agregado al carrito ",
+                            duration: 2000,
+                            newWindow: true,
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            stopOnFocus: true, 
+                            style: {
+                              background: "#49cb58",
+                              borderRadius: "2rem",
+                              textTransform: "uppercase",
+                              fontSize: ".85rem"
+                            }, 
+                            offset: {
+                                x: '1.5rem', 
+                                y: '1.5rem' 
+                              },
+                            onClick: function(){}
+                          }).showToast();
+
+                    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton)) {
+                        const index = productosCarrito.findIndex(dataProducto => dataProducto.id === idBoton);
+                        productosCarrito[index].cantidad++;
+                    } else {
+                        productoAgregado.cantidad = 1;
+                        // productoAgregado.talleSeleccionado = element;
+                        productosCarrito.push(productoAgregado);
+                        console.log(productoAgregado.talleSeleccionado);
+                        
+                    }
+                    actualizarNumeroCarrito();
+                    localStorage.setItem("productos-en-carrito", JSON.stringify(productosCarrito));
+                    
+                } else{
+
+                }
+            }     
+        }
+    })
 }
+
+
+function actualizarNumeroCarrito(){
+    let nuevoNumero = productosCarrito.reduce((acumulador, dataProducto) => acumulador + dataProducto.cantidad, 0)
+    numerito.innerText = nuevoNumero;
+}
+
 
 function verMas(){
         btnVerMas = document.querySelectorAll(".producto-vermas");
@@ -154,12 +181,5 @@ function verDetalles(e){
     localStorage.setItem("productos-detalles", JSON.stringify(productoDetalles));
     location.href='./detalles.html';
 
-}
-
-
-
-function actualizarNumeroCarrito(){
-    let nuevoNumero = productosCarrito.reduce((acumulador, dataProducto) => acumulador + dataProducto.cantidad, 0)
-    numerito.innerText = nuevoNumero;
 }
 

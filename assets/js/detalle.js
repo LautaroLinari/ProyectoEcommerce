@@ -3,11 +3,9 @@ productosEnDetalles = JSON.parse(productosEnDetalles);
 
 const contenedorDetalles = document.querySelector("#contenedor-detalles")
 let btnAgregarDetalles = document.querySelector(".detalles-producto-agregar");
-const talleBuscado = productosEnDetalles.talle;
+
 
 function cargarDetalles() {
-
-    // location.href=".../detalles.html";
 
     contenedorDetalles.innerHTML = "";
 
@@ -35,9 +33,9 @@ function cargarDetalles() {
                 <small>Precio: <p>$ ${productosEnDetalles.price} USD</p> </small>
             </div>
             <div class="detalle-producto-precio">
-                <button class="detalles-producto-agregar" id="${productosEnDetalles.id}">Agregar al Carrito</button>
+                <button class="detalles-producto-agregar" id="${productosEnDetalles.id}"><i class="bi bi-bar-chart-fill"></i> Ver Tabla de Talles</button>
             </div>
-            </div>`;
+        </div>`;
 
         contenedorDetalles.append(div);
 
@@ -47,13 +45,16 @@ cargarDetalles();
 
 agregarDeDetalles();
 
-
 function agregarDeDetalles(){
     btnAgregarDetalles = document.querySelector(".detalles-producto-agregar");
-    btnAgregarDetalles.addEventListener("click", agregarDesdeDetalles);
+    btnAgregarDetalles.addEventListener("click", verTalla);
 }
 
-function agregarDesdeDetalles(){
-
-
+function verTalla(){
+    Swal.fire({
+        imageUrl: './assets/img/tablaTalles.jpg',
+        imageHeight: 500,
+        imageAlt: 'TallaShoes'
+      })
 }
+

@@ -2,6 +2,7 @@
     Hecho:
     1- Interfaz de usuario 
     2- Funcionalidades basicas 
+    2- Seleccionar el talle disponible para agregar al carrito
     3- Implementacion de Fetch
     4- Uso de objetos
     5- Promesas
@@ -11,7 +12,7 @@
 
 
     Sin Hacer:
-    2- Seleccionar el talle disponible para agregar al carrito
+    2- Arreglar el talle disponible para agregar al carrito
     3- Actualizar cantidad de productos en el carrito con Ajax
     9- Documentacion y presentacion
 
