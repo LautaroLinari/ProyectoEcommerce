@@ -15,6 +15,9 @@ let btnActualizarMinus = document.querySelectorAll(".actualizar-cantidad-minus")
 let btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
 
 
+
+
+
 function cargarProductosCarrito() {
 
     if(productosEnCarrito && productosEnCarrito.length > 0){
@@ -23,12 +26,11 @@ function cargarProductosCarrito() {
         contenedorProductos.classList.remove("disabled");
         contenedorAcciones.classList.remove("disabled");
         contenedorComprado.classList.add("disabled");
-
+    
         contenedorProductos.innerHTML = "";
-
+    
         productosEnCarrito.forEach(producto => {
-            
-            const div = document.createElement("div");
+                const div = document.createElement("div");
             div.classList.add("carrito-producto");
             div.innerHTML = `
                 <img class="carrito-producto-imagen" src="${producto.img}" alt="${producto.name}">
@@ -39,24 +41,24 @@ function cargarProductosCarrito() {
                 <div class="carrito-producto-cantidad">
                     <small>Cantidad</small>
                     <p>${producto.cantidad}</p>
-                    <button class="actualizar-cantidad-minus" id="${producto.cantidad}"><i class="bi bi-dash"></i></button>
-                    <button class="actualizar-cantidad-plus" id="${producto.cantidad}"><i class="bi bi-plus"></i></button>
+                    <button class="actualizar-cantidad-minus" id="${producto.id}"><i class="bi bi-dash"></i></button>
+                    <button class="actualizar-cantidad-plus" id="${producto.id}"><i class="bi bi-plus"></i></button>
                 </div>
                     <div class="carrito-producto-cantidad">
-                    <small>Talle</small>
-                    <p>${producto.talle}</p>
-                 </div>
+                        <small>Talle</small>
+                        <p>${producto.talleSeleccionado}</p>
+                    </div>
                 <div class="carrito-producto-precio">
                     <small>Precio</small>
                     <p>$ ${producto.price} USD</p>
                 </div>
-                <div class="carrito-producto-subtotal">
-                    <small>Subtotal</small>
-                    <p>$ ${producto.price * producto.cantidad} USD</p>
+                    <div class="carrito-producto-subtotal">
+                        <small>Subtotal</small>
+                        <p>$ ${producto.price * producto.cantidad} USD</p>
                 </div>
                 <button class="carrito-producto-eliminar" id="${producto.id}" ><i class="bi bi-trash3-fill"></i></button>
             `;
-
+    
             contenedorProductos.append(div);
         });
 
@@ -69,42 +71,56 @@ function cargarProductosCarrito() {
 
     actualizarEliminar();
     actualizarTotal();
-    // actualizarCantidad();
+    actualizarCantidad();
 }
 
-/*
-    Para eso deberías bajarle la cantidad, deberíamos hacer dos botoncitos en el carrito mismo y que se pueda aumentar y disminuir la cantidad, 
-    con una función muy parecida a la de eliminar, pero que simplemente haga cantidad++ o cantidad— y actualizarCarrito para que vuelva a mostrarlo bien digamos 
-*/
 cargarProductosCarrito();
 
-// function actualizarCantidad(){
-//     btnActualizarMinus = document.querySelectorAll(".actualizar-cantidad-minus");
-//     btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
+function actualizarCantidad(){
+    btnActualizarMinus = document.querySelectorAll(".actualizar-cantidad-minus");
+    btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
 
 
-//     btnActualizarMinus.forEach(boton => {
-//         boton.addEventListener("click", restarCantidad);
-//     })
+    btnActualizarMinus.forEach(boton => {
+        boton.addEventListener("click", restarCantidad);
+    })
 
-//     btnActualizarPlus.forEach(boton => {
-//         boton.addEventListener("click", sumarCantidad);
-//     })
+    btnActualizarPlus.forEach(boton => {
+        boton.addEventListener("click", sumarCantidad);
+    })
 
-// }
-// function restarCantidad(e){
-//     let idBoton = e.currentTarget.id;
-//     console.log(idBoton);
-//     const actualizarCantidad = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-//     console.log(actualizarCantidad);
-// }
+}
 
-// function sumarCantidad(){
-//     console.log("sumando");
-// }
+function restarCantidad(e){
+    let idBoton = e.currentTarget.id;
+    // console.log(idBoton);
+    const actualizarCantidad = productosEnCarrito.find(producto => producto.id === idBoton);
+    // const cantidadRestada = actualizarCantidad.cantidad;
+    // console.log(cantidadRestada);
+    if (actualizarCantidad.cantidad === 1) {
+        actualizarCantidad.cantidad--;
+        eliminarDelCarrito(e);
+    } else {
+        actualizarCantidad.cantidad--;
+        productosEnCarrito.pop(productosEnCarrito);
+        productosEnCarrito.push(actualizarCantidad);
+        cargarProductosCarrito();
+        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 
+    }
+}
 
-
+function sumarCantidad(e){
+    let idBoton = e.currentTarget.id;
+    // console.log(idBoton);
+    const actualizarCantidad = productosEnCarrito.find(producto => producto.id === idBoton);
+    // console.log(actualizarCantidad.cantidad);
+    actualizarCantidad.cantidad++;
+    productosEnCarrito.pop(productosEnCarrito);
+    productosEnCarrito.push(actualizarCantidad);
+    cargarProductosCarrito();
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+}
 
 function actualizarEliminar() {
     btnElminar = document.querySelectorAll(".carrito-producto-eliminar");
@@ -114,14 +130,15 @@ function actualizarEliminar() {
     });
 }
 
+//ELIMINAR ELEMENTO DESDE EL BUTTON
 function eliminarDelCarrito(e){
     Toastify({
         text: "Eliminado ",
         duration: 2000,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
         style: {
           background: "#c53838",
           borderRadius: "2rem",
@@ -129,10 +146,10 @@ function eliminarDelCarrito(e){
           fontSize: ".85rem"
         }, 
         offset: {
-            x: '1.5rem', // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-            y: '1.5rem' // vertical axis - can be a number or a string indicating unity. eg: '2em'
+            x: '1.5rem', 
+            y: '1.5rem' 
           },
-        onClick: function(){} // Callback after click
+        onClick: function(){} 
       }).showToast();
 
     let idBoton = e.currentTarget.id;
@@ -147,6 +164,7 @@ function eliminarDelCarrito(e){
 
 }
 
+//VACIAR CARRITO CON CONSULTA
 btnVaciar.addEventListener("click", vaciarCarrito);
 function vaciarCarrito(){
 
@@ -160,11 +178,11 @@ function vaciarCarrito(){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Eliminar',
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+
         if (result.isConfirmed) {
 
             productosEnCarrito.length = 0;
-            //Convierto el localstorage en objeto
+
             localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
             cargarProductosCarrito();
 

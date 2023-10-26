@@ -11,7 +11,9 @@
 
 }
 
-
+body{
+    background-color: var(--clr-main);
+}
 
 
 * {
@@ -146,8 +148,14 @@ main{
 }
 
 .main2{
-    margin: 0;
-    border-radius: 0;
+    margin: 1rem;
+}
+
+.headerDetalles{
+    background-color: var(--clr-main);
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-top: 2rem;
 }
 
 .volverIndex{
@@ -158,6 +166,7 @@ main{
     border-radius: .5rem;
     font-weight: 900;
     cursor: pointer;
+    border: 1px solid var(--clr-violet);
 }
 
 .volverIndex:hover{
@@ -291,6 +300,7 @@ main{
     cursor: pointer;
     font-size: larger;
     font-weight: 900;
+    border: 1px solid var(--clr-main-buy);
 }
 
 .contenedor-detalle button:hover{
@@ -374,6 +384,11 @@ main{
 
 }
 
+.carrito-acciones-vaciar:hover{
+    background-color: var(--clr-red);
+    color: var(--clr-white);
+}
+
 .carrito-acciones-derecha{
     display: flex;
 
@@ -399,8 +414,13 @@ main{
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 900;
-
 }
+
+.carrito-acciones-comprar:hover{
+    background-color: var(--clr-main-buy);
+    color: var(--clr-white);
+}
+
 
 .disabled{
     display: none;

@@ -43,7 +43,7 @@ function cargarProductos(productosElegidos) {
             <h2 class="producto-titulo">${product.name}</h2>
             <p class="producto-price">Talles disponibles: ${product.talle}</p>
             <p class="producto-price">$ ${product.price} USD</p>
-            <button class="producto-vermas"  id="${product.id}">Ver mas</button>
+            <button class="producto-vermas"  id="${product.id}">Ver detalles</button>
             <button class="producto-agregar" id=${product.id}>Agregar</button>
         </div>
         
@@ -117,7 +117,8 @@ function agregarCarrito(e) {
                 const element = talleBuscado[i];
 
                 if(value === `${element}`){
-                        Toastify({
+                    Toastify({
+
                             text: "Agregado al carrito ",
                             duration: 2000,
                             newWindow: true,
@@ -136,23 +137,26 @@ function agregarCarrito(e) {
                                 y: '1.5rem' 
                               },
                             onClick: function(){}
-                          }).showToast();
+                    }).showToast();
 
-                    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton)) {
+
+                    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton)) {  
                         const index = productosCarrito.findIndex(dataProducto => dataProducto.id === idBoton);
                         productosCarrito[index].cantidad++;
+    
                     } else {
+
+                        // console.log(productoAgregado.talleSeleccionado);
+                        productoAgregado.talleSeleccionado = element;
                         productoAgregado.cantidad = 1;
-                        // productoAgregado.talleSeleccionado = element;
                         productosCarrito.push(productoAgregado);
-                        console.log(productoAgregado.talleSeleccionado);
-                        
+    
                     }
                     actualizarNumeroCarrito();
                     localStorage.setItem("productos-en-carrito", JSON.stringify(productosCarrito));
                     
                 } else{
-
+                    
                 }
             }     
         }
