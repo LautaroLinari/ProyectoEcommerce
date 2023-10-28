@@ -1,6 +1,7 @@
+//VARIABLES A UTILIZAR
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
- 
+
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorProductos = document.querySelector("#carrito-productos");
 const contenedorAcciones = document.querySelector("#carrito-acciones");
@@ -17,7 +18,7 @@ let btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
 
 
 
-
+//CARGAR LOS PRODUCTOS DESDE EL LOCALSTORAGE
 function cargarProductosCarrito() {
 
     if(productosEnCarrito && productosEnCarrito.length > 0){
@@ -73,9 +74,9 @@ function cargarProductosCarrito() {
     actualizarTotal();
     actualizarCantidad();
 }
-
 cargarProductosCarrito();
 
+//EVENTO BOTONES CANTIDAD
 function actualizarCantidad(){
     btnActualizarMinus = document.querySelectorAll(".actualizar-cantidad-minus");
     btnActualizarPlus = document.querySelectorAll(".actualizar-cantidad-plus");
@@ -91,6 +92,7 @@ function actualizarCantidad(){
 
 }
 
+//DISMINUIR CANTIDAD
 function restarCantidad(e){
     let idBoton = e.currentTarget.id;
     // console.log(idBoton);
@@ -110,6 +112,7 @@ function restarCantidad(e){
     }
 }
 
+//AUMENTAR CANTIDAD
 function sumarCantidad(e){
     let idBoton = e.currentTarget.id;
     // console.log(idBoton);
@@ -121,7 +124,7 @@ function sumarCantidad(e){
     cargarProductosCarrito();
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
-
+//EVENTO BOTON ELIMINAR
 function actualizarEliminar() {
     btnElminar = document.querySelectorAll(".carrito-producto-eliminar");
 
@@ -164,7 +167,7 @@ function eliminarDelCarrito(e){
 
 }
 
-//VACIAR CARRITO CON CONSULTA
+//EVENTO = VACIAR CARRITO CON CONSULTA
 btnVaciar.addEventListener("click", vaciarCarrito);
 function vaciarCarrito(){
 
@@ -191,17 +194,14 @@ function vaciarCarrito(){
     
 }
 
-
-//Uso mediante objeto la funcion reduce para obtener el precio total
+//Uso mediante OBJETO la funcion reduce para obtener el precio total
 function actualizarTotal(){
 
     const totalCalculado = productosEnCarrito.reduce((acumulador, producto) => acumulador + (producto.price * producto.cantidad), 0);
     total.innerText = `$ ${totalCalculado} USD`;
 }
 
-
-
-// COMPRA SIMULADA
+// COMPRA SIMULADA MEDIANTE EVENTO, ADEMAS UNA ALERTA DE FORMULARIO Y UN INTERVALO DE TIEMPO
 btnComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito(){
 

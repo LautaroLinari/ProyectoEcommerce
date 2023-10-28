@@ -1,3 +1,5 @@
+//VARIABLES A UTILIZAR
+
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const btnsCategoria = document.querySelectorAll(".boton-categoria");
 const titulo = document.querySelector("#titulo-principal");
@@ -8,7 +10,7 @@ const buscador = document.getElementById("buscar");
 
 let dataProductos = [];
 
-    //Fetch con Promesas
+//Fetch con Promesas
 fetch("./assets/data/productos.json")
     .then(response => {
         if(response.status === 200){
@@ -29,7 +31,7 @@ fetch("./assets/data/productos.json")
     })
 
 
-
+//CARGAR PRODUCTOS DESDE EL JSON
 function cargarProductos(productosElegidos) {
 
     contenedorProductos.innerHTML = "";
@@ -55,7 +57,7 @@ function cargarProductos(productosElegidos) {
     verMas();
 }
 
-
+//BTNS DE CATEGORIA
 btnsCategoria.forEach(boton => {
     boton.addEventListener("click", (e) =>{
 
@@ -77,7 +79,7 @@ btnsCategoria.forEach(boton => {
         }
     })
 })
-
+//BTN DE AGREGAR
 function actualizarAgregar() {
     btnAgregar = document.querySelectorAll(".producto-agregar");
 
@@ -88,7 +90,6 @@ function actualizarAgregar() {
 
 let productosCarrito;
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
-
 if(productosEnCarrito){
     productosCarrito = JSON.parse(productosEnCarrito); 
     actualizarNumeroCarrito();
@@ -96,7 +97,7 @@ if(productosEnCarrito){
     productosCarrito = [];
 }
 
-
+//AGREGAR AL CARRITO DESDE UN INPUT ALERT Y LUEGO UNA NOTIFICACION
 function agregarCarrito(e) {
 
     const idBoton = e.currentTarget.id
@@ -118,7 +119,6 @@ function agregarCarrito(e) {
 
                 if(value === `${element}`){
                     Toastify({
-
                             text: "Agregado al carrito ",
                             duration: 2000,
                             newWindow: true,
@@ -164,13 +164,13 @@ function agregarCarrito(e) {
 
 }
 
-
+//FUNCION QUE ACTUALIZA EL NUMERO DEL CARRITO DE FORMA DINAMICA
 function actualizarNumeroCarrito(){
     let nuevoNumero = productosCarrito.reduce((acumulador, dataProducto) => acumulador + dataProducto.cantidad, 0)
     numerito.innerText = nuevoNumero;
 }
 
-
+//BTN DE VER DETALLES
 function verMas(){
         btnVerMas = document.querySelectorAll(".producto-vermas");
         btnVerMas.forEach(boton => {
@@ -178,7 +178,7 @@ function verMas(){
     })
 }
 
-
+//FUNCION QUE REALIZA UN SET EN LOCALSTORAGE PARA POSTERIOMENTE VISUALIZAR LOS DETALLES
 function verDetalles(e){
     const idBoton = e.currentTarget.id
     const productoDetalles = dataProductos.find(dataProducto => dataProducto.id === idBoton);
@@ -189,6 +189,7 @@ function verDetalles(e){
 
 }
 
+//FUNCION DE BUSCAR POR NOMBRE
 function filtrarPorNombre() {
     const buscado = buscador.value.toLowerCase().trim();
     console.log(buscado);
@@ -214,6 +215,7 @@ function filtrarPorNombre() {
      }
 }
 
+//EVENTO SUBMIT EN EL INPUT DE BUSCAR
 const form = document.getElementById("form-buscador");
 form.addEventListener("submit", function(event){
     event.preventDefault();
