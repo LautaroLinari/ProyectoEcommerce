@@ -4,6 +4,7 @@ const titulo = document.querySelector("#titulo-principal");
 let btnAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
 let btnVerMas = document.querySelectorAll(".producto-vermas");
+const buscador = document.getElementById("buscar");
 
 let dataProductos = [];
 
@@ -86,7 +87,6 @@ function actualizarAgregar() {
 }
 
 let productosCarrito;
-
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 
 if(productosEnCarrito){
@@ -102,8 +102,8 @@ function agregarCarrito(e) {
     const idBoton = e.currentTarget.id
     const productoAgregado = dataProductos.find(dataProducto => dataProducto.id === idBoton);
     const talleBuscado = productoAgregado.talle;
-
-
+    // console.log(productoAgregado);
+    
      Swal.fire({
         title: 'Selecciona un talle',
         input: 'number',
@@ -113,8 +113,8 @@ function agregarCarrito(e) {
         cancelButtonText:'Cancelar',
         confirmButtonText:'Agregar',
         inputValidator: (value) => {
-            for (let i = 0; i < talleBuscado.length; i++) {
-                const element = talleBuscado[i];
+              for (let i = 0; i < talleBuscado.length; i++) {
+                  const element = talleBuscado[i];
 
                 if(value === `${element}`){
                     Toastify({
@@ -139,28 +139,29 @@ function agregarCarrito(e) {
                             onClick: function(){}
                     }).showToast();
 
+                    productoAgregado.talleSeleccionado = element;
+                    const talleElegido = productoAgregado.talleSeleccionado;
 
-                    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton)) {  
-                        const index = productosCarrito.findIndex(dataProducto => dataProducto.id === idBoton);
+                    if (productosCarrito.some(dataProducto => dataProducto.id === idBoton && dataProducto.talleSeleccionado === talleElegido)) {
+                        const index = productosCarrito.findIndex(dataProducto => dataProducto.id === idBoton && dataProducto.talleSeleccionado === talleElegido);
                         productosCarrito[index].cantidad++;
-    
+                        
                     } else {
-
-                        // console.log(productoAgregado.talleSeleccionado);
-                        productoAgregado.talleSeleccionado = element;
-                        productoAgregado.cantidad = 1;
-                        productosCarrito.push(productoAgregado);
-    
+                        
+                    productoAgregado.cantidad = 1;
+                    productosCarrito.push(productoAgregado);
+        
                     }
-                    actualizarNumeroCarrito();
+
                     localStorage.setItem("productos-en-carrito", JSON.stringify(productosCarrito));
-                    
+                    actualizarNumeroCarrito();
                 } else{
-                    
+
                 }
-            }     
+             }     
         }
     })
+
 }
 
 
@@ -177,6 +178,7 @@ function verMas(){
     })
 }
 
+
 function verDetalles(e){
     const idBoton = e.currentTarget.id
     const productoDetalles = dataProductos.find(dataProducto => dataProducto.id === idBoton);
@@ -186,4 +188,35 @@ function verDetalles(e){
     location.href='./detalles.html';
 
 }
+
+function filtrarPorNombre() {
+    const buscado = buscador.value.toLowerCase().trim();
+    console.log(buscado);
+
+     if (buscado) {
+         const nombreBuscado = dataProductos.filter(producto => producto.name.toLowerCase().includes(buscado));
+    
+        if(nombreBuscado){
+             cargarProductos(nombreBuscado);
+             buscador.value = '';
+         }
+         else{
+            alert(`No se encuentra nada con el nombre: ${buscado}`);
+         }
+
+     } else {
+        Swal.fire(
+            'El campo se encuentra vacio!',
+            'Ingrese un nombre a buscar!',
+            'warning'
+          )
+          
+     }
+}
+
+const form = document.getElementById("form-buscador");
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    filtrarPorNombre();
+})
 

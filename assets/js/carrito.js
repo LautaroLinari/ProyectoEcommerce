@@ -333,7 +333,7 @@ function comprarCarrito(){
                   })
               }
             })
-    
+
             productosEnCarrito.length = 0;
             localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
     
@@ -345,6 +345,9 @@ function comprarCarrito(){
                 contenedorComprado.classList.remove("disabled");
             }
         } 
+    })
+    .catch((reject) => {
+        reject(new Error('Error en el pago, intentelo nuevamente mas tarde!'));
     })
 }
 

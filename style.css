@@ -61,6 +61,27 @@ aside{
     font-size: 1.3rem;
 }
 
+.logotipe{
+    padding: 1rem;
+}
+
+.buscador{
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: 900;
+    margin-left: .5rem;
+}
+
+.buscador input{
+    padding: 7px 0 7px 0;
+    margin-left: .8rem;
+    border-radius: .2rem;
+    text-align: center;
+    border: 1px solid var(--clr-white);
+    margin-bottom: 4rem;
+}
+
+
 .boton-menu{
     background-color: transparent;
     border: 0;
@@ -109,7 +130,7 @@ aside{
 .menu{
     display: flex;
     flex-direction: column;
-    gap: .5rem;    
+    gap: .7rem;    
 }
 
 .boton-categoria > i.bi-hand-index-thumb-fill, .boton-categoria > i.bi-hand-index-thumb{
@@ -151,14 +172,14 @@ main{
     margin: 1rem;
 }
 
-.headerDetalles{
+.header-detalles{
     background-color: var(--clr-main);
     padding: 1rem;
     padding-left: 2rem;
     padding-top: 2rem;
 }
 
-.volverIndex{
+.volver-index{
     padding: .7rem;
     margin-left: 2rem;
     background-color: var(--clr-violet);
@@ -169,7 +190,7 @@ main{
     border: 1px solid var(--clr-violet);
 }
 
-.volverIndex:hover{
+.volver-index:hover{
     background-color: white;
     color: var(--clr-violet);
 
@@ -439,8 +460,6 @@ main{
 
 /* Medias Querys */
 
-
-
 @media screen and (max-width: 950px) {
     .contenedor-productos{
         grid-template-columns: 1fr 1fr 1fr;
@@ -457,6 +476,9 @@ main{
     }
     .producto-titulo{
         font-size: 1rem;
+    }
+    .buscador{
+        margin: 0;
     }
     
 }
